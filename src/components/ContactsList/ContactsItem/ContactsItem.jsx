@@ -3,10 +3,12 @@ import React from 'react';
 import css from './ContactsItem.module.css';
 
 const ContactsItem = ({ contact }) => {
-  const { name } = contact;
+  const { name, number } = contact;
   return (
     <li className={css.ContactsItem}>
-      <p>{name}</p>
+      <p>
+        {name}: {number}
+      </p>
     </li>
   );
 };
@@ -14,6 +16,7 @@ const ContactsItem = ({ contact }) => {
 // ContactsItem.propTypes = {
 //   contact: PropTypes.shape({
 //     name: PropTypes.string.isRequired,
+//     number: PropTypes.string.isRequired,
 //   }).isRequired,
 // };
 

@@ -6,6 +6,7 @@ import css from './CreateContactForm.module.css';
 class CreateContactForm extends Component {
   state = {
     name: '',
+    number: '',
   };
 
   // static propTypes = {
@@ -24,13 +25,14 @@ class CreateContactForm extends Component {
     const newContact = {
       id: nanoid(),
       name: this.state.name.trim(),
+      number: this.state.number.trim(),
     };
     this.props.onCreateContact(newContact);
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
-    const { name } = this.state;
+    const { name, number } = this.state;
     return (
       <form
         className={css.createContactForm}
@@ -45,6 +47,19 @@ class CreateContactForm extends Component {
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+            onChange={this.handleOnChange}
+          />
+        </label>
+        <label className={css.labelForm}>
+          Number
+          <input
+            className={css.inputFieldForm}
+            type="tel"
+            value={number}
+            name="number"
+            pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             onChange={this.handleOnChange}
           />
