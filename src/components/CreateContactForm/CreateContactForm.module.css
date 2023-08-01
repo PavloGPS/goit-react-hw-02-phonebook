@@ -12,14 +12,14 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-.labelForm {
+.formLabel {
   display: flex;
   gap: 8px;
   flex-direction: column;
   font-weight: 700;
 }
 
-.inputFieldForm {
+.formInputField {
   width: 200px;
   padding: 8px;
   border: 1px solid #ab9e9e;

@@ -38,10 +38,10 @@ class CreateContactForm extends Component {
         className={css.createContactForm}
         onSubmit={this.handleCreateContact}
       >
-        <label className={css.labelForm}>
+        <label className={css.formLabel}>
           Name
           <input
-            className={css.inputFieldForm}
+            className={css.formInputField}
             type="text"
             value={name}
             name="name"
@@ -51,10 +51,10 @@ class CreateContactForm extends Component {
             onChange={this.handleOnChange}
           />
         </label>
-        <label className={css.labelForm}>
+        <label className={css.formLabel}>
           Number
           <input
-            className={css.inputFieldForm}
+            className={css.formInputField}
             type="tel"
             value={number}
             name="number"
