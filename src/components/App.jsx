@@ -37,6 +37,14 @@ export class App extends Component {
     number: '',
   };
   addContact = newContact => {
+    const nameIsAlreadyInContacts = this.state.contacts.some(
+      contact => newContact.name.toLowerCase() === contact.name.toLowerCase()
+    );
+
+    if (nameIsAlreadyInContacts) {
+      alert(`${newContact.name} is already in contacts.`);
+      return;
+    }
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
     }));
@@ -48,7 +56,6 @@ export class App extends Component {
 
   getFilteredContacts = () => {
     const { filter, contacts } = this.state;
-    // const normalizedFilter = filter.toLocaleLowerCase();
     return contacts.filter(contact =>
       contact.name.toLocaleLowerCase().includes(filter)
     );
@@ -60,9 +67,8 @@ export class App extends Component {
 
     return (
       <>
-        <h1>Phonebook</h1>
+        <h1 style={{ textAlign: 'center' }}>Phonebook</h1>
         <CreateContactForm onCreateContact={this.addContact} />
-
         <Section title="Contacts">
           <Filter value={filter} onChangeFilterValue={this.setFilter} />
           <ContactsList contacts={filteredContacts} />

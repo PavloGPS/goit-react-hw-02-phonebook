@@ -22,10 +22,11 @@ class CreateContactForm extends Component {
 
   handleCreateContact = e => {
     e.preventDefault();
+    const { name, number } = this.state;
     const newContact = {
       id: nanoid(),
-      name: this.state.name.trim(),
-      number: this.state.number.trim(),
+      name: name.trim(),
+      number: number.trim(),
     };
     this.props.onCreateContact(newContact);
     this.setState({ name: '', number: '' });
