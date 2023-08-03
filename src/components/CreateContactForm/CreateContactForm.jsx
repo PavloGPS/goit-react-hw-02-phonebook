@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './CreateContactForm.module.css';
 
 class CreateContactForm extends Component {
@@ -9,15 +9,13 @@ class CreateContactForm extends Component {
     number: '',
   };
 
-  // static propTypes = {
-  //   onCreateContact: PropTypes.func.isRequired,
-  // };
+  static propTypes = {
+    onCreateContact: PropTypes.func.isRequired,
+  };
 
   handleOnChange = e => {
     const { name, value } = e.currentTarget;
-
     this.setState({ [name]: value });
-    console.log(this.state.name);
   };
 
   handleCreateContact = e => {
