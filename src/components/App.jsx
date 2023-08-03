@@ -33,9 +33,8 @@ export class App extends Component {
       { id: 'id-25', name: 'Aiden Clark', number: '999-00-11' },
     ],
     filter: '',
-    // name: '',
-    // number: '',
   };
+
   addContact = newContact => {
     const nameIsAlreadyInContacts = this.state.contacts.some(
       contact => newContact.name.toLowerCase() === contact.name.toLowerCase()
