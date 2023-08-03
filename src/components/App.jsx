@@ -33,8 +33,8 @@ export class App extends Component {
       { id: 'id-25', name: 'Aiden Clark', number: '999-00-11' },
     ],
     filter: '',
-    name: '',
-    number: '',
+    // name: '',
+    // number: '',
   };
   addContact = newContact => {
     const nameIsAlreadyInContacts = this.state.contacts.some(
@@ -60,6 +60,11 @@ export class App extends Component {
       contact.name.toLocaleLowerCase().includes(filter)
     );
   };
+  removeContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
 
   render() {
     const { filter } = this.state;
@@ -71,7 +76,10 @@ export class App extends Component {
         <CreateContactForm onCreateContact={this.addContact} />
         <Section title="Contacts">
           <Filter value={filter} onChangeFilterValue={this.setFilter} />
-          <ContactsList contacts={filteredContacts} />
+          <ContactsList
+            contacts={filteredContacts}
+            onDeleteBtnClick={this.removeContact}
+          />
         </Section>
       </>
     );
